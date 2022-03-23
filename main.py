@@ -26,6 +26,7 @@ def recipes_page_process(URL, page_number, categories_list, first_n_recipes = 18
         print(BASE_URL + recipe.findNext('a').get('href'))
         if load_recipe(BASE_URL + recipe.findNext('a').get('href'), categories_list):
             recipes_added+=1
+        print(recipes_added)
     print('RECIPES ADDED ' + str(recipes_added))
 
 # def change_category(URL):
@@ -38,8 +39,7 @@ def recipes_page_process(URL, page_number, categories_list, first_n_recipes = 18
 #     doc = db.collection('recipes').document(id)
 #     if doc.get().exists:
 #         doc.update({
-#             'classic': firestore.DELETE_FIELD,
-#             'unusual': True
+#             'seafood': firestore.DELETE_FIELD,
 #         })
 #         print(id + ' category changed')
 
@@ -100,8 +100,8 @@ firebase_admin.initialize_app(cred,{
 })
 db = firestore.client()
 
-recipes_page_process('https://1000.menu/cooking/search?ms=1&str=&sostav_arr_add%5B%5D=18&es_tf=0&es_tt=14&es_cf=0&es_ct=2000&arr_catalog_1%5B959%5D=959&arr_catalog_1%5B960%5D=960&arr_catalog_1%5B8644%5D=8644&arr_catalog%5B13%5D=13', 1, 
-['second_course', 'fried', 'meat'])
+# recipes_page_process('https://1000.menu/catalog/bezalkogolnje-napitki?arr_catalog_sub%5B6500%5D%5B16%5D=16', 1, 
+# ['drinks'])
 
 # ПЕРВОЕ БЛЮДО
     # КЛАССИКА
@@ -152,5 +152,64 @@ recipes_page_process('https://1000.menu/cooking/search?ms=1&str=&sostav_arr_add%
     # ЖАРЕНОЕ
         # ИЗ МЯСА И ПТИЦЫ
         # ссылка https://1000.menu/cooking/search?ms=1&str=&sostav_arr_add%5B%5D=18&es_tf=0&es_tt=14&es_cf=0&es_ct=2000&arr_catalog_1%5B959%5D=959&arr_catalog_1%5B960%5D=960&arr_catalog_1%5B8644%5D=8644&arr_catalog%5B13%5D=13
-        # добавлены страницы: 
+        # добавлены страницы: 1
         # набор категорий: second_course fried meat
+
+        # ИЗ РЫБЫ И МОРЕПРОДУКТОВ
+        # ссылка морепродукты https://1000.menu/cooking/search?ms=1&str=&sostav_arr_add%5B%5D=1699&sostav_arr_remove%5B%5D=20&es_tf=0&es_tt=14&es_cf=0&es_ct=2000&arr_catalog_1%5B959%5D=959&arr_catalog_1%5B960%5D=960&arr_catalog_1%5B8644%5D=8644&arr_catalog%5B13%5D=13
+        # добавлены страницы: 1 
+        # ссылка рыба https://1000.menu/cooking/search?ms=1&str=&sostav_arr_add%5B%5D=20&sostav_arr_remove%5B%5D=1699&es_tf=0&es_tt=14&es_cf=0&es_ct=2000&arr_catalog_1%5B959%5D=959&arr_catalog_1%5B960%5D=960&arr_catalog_1%5B8644%5D=8644&arr_catalog%5B13%5D=13
+        # добавлены страницы: 1 (первые 100)
+        # набор категорий: second_course fried seafood
+
+        # ИЗ ОВОЩЕЙ
+        # ссылка https://1000.menu/cooking/search?ms=1&str=&sostav_arr_add%5B%5D=23&sostav_arr_remove%5B%5D=18&sostav_arr_remove%5B%5D=20&sostav_arr_remove%5B%5D=1699&sostav_arr_remove%5B%5D=38&es_tf=0&es_tt=14&es_cf=0&es_ct=2000&arr_catalog_1%5B959%5D=959&arr_catalog_1%5B960%5D=960&arr_catalog_1%5B8644%5D=8644&arr_catalog%5B13%5D=13
+        # добавлены страницы: 1
+        # набор категорий: second_course fried vegetables
+
+    # ВАРЕНОЕ И ГАРНИРЫ
+    # ссылка вареное - этот категория на сайте поломанная, так что пока гарниры только
+    # добавлены страницы:
+    # ссылка гарниры https://1000.menu/catalog/garnirj
+    # добавлены страницы: 1 2
+    # набор категорий: second_course boiled_side_dishes
+
+# ДЕСЕРТЫ
+    # НА СКОВОРОДКЕ
+    # ссылка https://1000.menu/cooking/search?ms=1&str=&es_tf=0&es_tt=14&es_cf=0&es_ct=2000&arr_catalog_1%5B959%5D=959&arr_catalog_1%5B960%5D=960&arr_catalog%5B14%5D=14
+    # добавлены страницы: 1 (до 66)
+    # ссылка https://1000.menu/cooking/search?ms=1&str=&es_tf=0&es_tt=14&es_cf=0&es_ct=2000&arr_catalog_1%5B959%5D=959&arr_catalog_1%5B8644%5D=8644&arr_catalog%5B14%5D=14
+    # добавлены страницы: 1 (до 21)
+    # ссылка https://1000.menu/catalog/syrniki-na-skovorode
+    # добавлены страницы: 1 (до 20)
+    # ссылка https://1000.menu/catalog/pankeiki
+    # добавлены страницы: 1 (до 20)
+    # ссылка https://1000.menu/catalog/blinj-i-blinchiki
+    # добавлены страницы: 1 (до 40)
+    # набор категорий: desserts fried
+
+    # В ДУХОВКЕ
+    # ссылка https://1000.menu/cooking/search?ms=1&str=&es_tf=0&es_tt=14&es_cf=0&es_ct=2000&arr_catalog_1%5B959%5D=959&arr_catalog_1%5B963%5D=963&arr_catalog%5B14%5D=14
+    # добавлены страницы: 1 
+    # набор категорий: desserts oven
+
+    # БЕЗ ВЫПЕЧКИ И ЖАРКИ
+    # ссылка https://1000.menu/cooking/search?ms=1&str=&es_tf=0&es_tt=14&es_cf=0&es_ct=2000&arr_catalog_1%5B959%5D=959&arr_catalog_1%5B6630%5D=6630&arr_catalog%5B14%5D=14
+    # добавлены страницы: 1 (до 160)
+    # набор категорий: desserts without_heat 
+
+# ЗАКУСКИ
+    # ГОРЯЧИЕ
+    # ссылка https://1000.menu/catalog/zakuski-goryachie
+    # добавлены страницы: 1
+    # набор категорий: snacks hot
+
+    # ХОЛОДНЫЕ
+    # ссылка https://1000.menu/catalog/zakuski-xolodnje
+    # добавлены страницы: 1
+    # набор категорий: snacks cold
+
+# НАПИТКИ
+# ссылка https://1000.menu/catalog/bezalkogolnje-napitki?arr_catalog_sub%5B6500%5D%5B16%5D=16
+# добавлены страницы: 1
+# набор категорий: drinks
